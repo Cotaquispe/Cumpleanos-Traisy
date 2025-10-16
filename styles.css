@@ -1,0 +1,165 @@
+/* Importar fuentes - Dancing Script y Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    /* Colores basados en tu diseño */
+    --primary-green: #38761D; 
+    --secondary-green: #6AA84F; 
+    --light-green: #D9EAD3; 
+    --text-color: #333;
+    --white: #FFFFFF;
+}
+
+/* Estilos Globales y Fondo */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e4f5e0; 
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente todo el contenido principal */
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.container {
+    width: 95%;
+    /* Ajuste clave: Limita el ancho del contenido. 450px es un buen tamaño para tablet vertical/PC */
+    max-width: 450px; 
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* --- Título y Corazón --- */
+.title-header {
+    /* CAMBIO 4: Reducir el espacio entre el título y el contador (de 25px a 10px) */
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heart-container { 
+    /* CAMBIO 4: Menos espacio debajo del corazón */
+    margin-top: 25px; 
+    margin-bottom: 0; /* Eliminado el margen inferior para pegar el corazón al título */
+}
+
+.heart-icon {
+    width: 60px; 
+    height: auto;
+}
+
+
+.title-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-green);
+    /* CAMBIO 1: Tamaño ajustado para forzar '¡QUEREMOS CELEBRARLO' / 'CONTIGO!' en PC */
+    font-size: 1.7em; 
+    letter-spacing: 1px;
+    margin: 0;
+    /* CAMBIO 1: Línea más apretada para que se vea mejor */
+    line-height: 1.3; 
+}
+
+/* --- Contador --- */
+.countdown-section {
+    background-color: var(--white);
+    /* CAMBIO 3: Padding: 10px (Superior), 20px (Derecha, Inferior, Izquierda) */
+    padding: 10px 20px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.countdown-section p {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-unit span {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--secondary-green);
+    line-height: 1;
+}
+
+.time-unit .label {
+    font-size: 0.8em;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+/* --- Invitación (Contenedor de Imagen) --- */
+.invitation-card-container {
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden; 
+    /* Animación */
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.invitation-card-container.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.invitation-image {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* Responsive: Ajustes para pantallas más pequeñas (móviles) */
+@media (max-width: 480px) {
+    
+    /* CAMBIO 2: Reducir el ancho del contenedor a 80% para forzar 3 líneas */
+    .container {
+        max-width: 80%; 
+    }
+    
+    .title-header h1 {
+        /* CAMBIO 2: Aumentar la fuente para que se vea más grande en 3 líneas */
+        font-size: 1.8em; 
+        line-height: 1.1; 
+    }
+    
+    .countdown-section {
+        /* Reducir padding en móvil para que no se vea tan ancho */
+        padding: 10px 15px 15px 15px;
+    }
+
+    .time-unit span {
+        font-size: 1.8em;
+    }
+
+    .time-unit .label {
+        font-size: 0.7em;
+    }
+}
+

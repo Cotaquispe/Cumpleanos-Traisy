@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinceaños Traisy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="background-music" loop autoplay muted>
+        <source src="img/musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <main class="container">
+        <header class="title-header">
+            <div class="heart-container">
+                <img src="img/heart.png" alt="Corazón verde" class="heart-icon"> 
+            </div>     
+            <h1>¡QUEREMOS CELEBRARLO CONTIGO!</h1>
+        </header>
+
+        <section id="countdown" class="countdown-section">
+            <p>Faltan para los XV Años:</p>
+            <div class="countdown-timer">
+                <div class="time-unit">
+                    <span id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="time-unit">
+                    <span id="hours">00</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="time-unit">
+                    <span id="minutes">00</span>
+                    <span class="label">Minutos</span>
+                </div>
+                <div class="time-unit">
+                    <span id="seconds">00</span>
+                    <span class="label">Segundos</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="invitation-card" class="invitation-card-container hidden">
+            <img src="img/invitacion_final.jpg" alt="Invitación de Quince Años de Traysi" class="invitation-image">
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+
+
