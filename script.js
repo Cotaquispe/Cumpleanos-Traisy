@@ -14,7 +14,7 @@ const EVENT_LOCATION = "Av. Próceres de la Independencia 3166, San Juan de Luri
 // Formato de fecha para Google Calendar: YYYYMMDDTHHMMSS
 const EVENT_DATE_CALENDAR_FORMAT = "20260113T203000"; 
 // Número de WhatsApp (***¡REEMPLAZA ESTE NÚMERO!***)
-const WHATSAPP_NUMBER = "+51999999999"; 
+const WHATSAPP_NUMBER = "+51925718931"; 
 const RSVP_MESSAGE = encodeURIComponent("¡Hola! Confirmo mi asistencia a los XV Años de Traisy.");
 
 // -----------------------------------------------------------
@@ -89,3 +89,4 @@ const unlockAudio = () => {
 };
 
 // 🔑 NUEVA FUNCIÓN: Pausar la música al salir de
+
