@@ -70,7 +70,7 @@ updateCountdown();
 
 // --- FUNCIÓN DE DESBLOQUEO DE AUDIO (SOLUCIÓN MÓVIL) ---
 const unlockAudio = () => {
-    // Si el elemento de audio existe y está en pausa (o silenciado al inicio)
+    // Si el elemento de audio existe y está silenciado al inicio
     if (audio && audio.paused || audio.muted) {
         audio.muted = false; // 1. Desilenciar
         audio.volume = 0.6; 
@@ -78,48 +78,14 @@ const unlockAudio = () => {
         // 2. Intentamos reproducir
         audio.play().then(() => {
             console.log("Audio desbloqueado y reproduciéndose.");
-            // 3. Si es exitoso, removemos solo los listeners que usamos
+            // 3. Si es exitoso, removemos los listeners de activación
             document.removeEventListener('click', unlockAudio);
             document.removeEventListener('touchend', unlockAudio);
+            // IMPORTANTE: Se elimina el listener de 'scroll' en ambos lados.
         }).catch(e => {
-            // 4. Si falla, el navegador lo intentará de nuevo con la próxima interacción.
-            console.log("El navegador sigue bloqueando la reproducción.", e);
+            console.log("El navegador sigue bloqueando la reproducción. Error:", e);
         });
     }
 };
 
-
-// --- FUNCIÓN PARA CONFIGURAR LOS ENLACES DE ACCIÓN ---
-function setupActionLinks() {
-    // 1. WhatsApp (Asistencia)
-    whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${RSVP_MESSAGE}`;
-    
-    // 2. Google Maps (Ubicación)
-    // Corregido el formato de URL para Google Maps
-    mapsBtn.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(EVENT_LOCATION)}`;
-    
-    // 3. Google Calendar (Agendar)
-    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_NAME)}&dates=${EVENT_DATE_CALENDAR_FORMAT}/${EVENT_DATE_CALENDAR_FORMAT}&details=Mis XV Años de Traisy - ¡Te esperamos!&location=${encodeURIComponent(EVENT_LOCATION)}`;
-    
-    calendarBtn.href = googleCalendarUrl;
-}
-
-
-// -----------------------------------------------------------
-// --- EVENT LISTENERS Y SETUP INICIAL ---
-// -----------------------------------------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Configurar los enlaces de WhatsApp, Mapa y Calendario
-    setupActionLinks();
-    
-    // 2. Animación de la Tarjeta
-    setTimeout(() => {
-        invitationCard.classList.add('visible');
-    }, 500); 
-
-    // 3. Activación de Audio (Optimizado para Web y Móvil)
-    // Nos enfocamos solo en las interacciones directas (click y toque)
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchend', unlockAudio); 
-    // ✨ Eliminamos el 'scroll' para no depender de él.
-});
+// 🔑 NUEVA FUNCIÓN: Pausar la música al salir de
