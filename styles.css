@@ -2,13 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
 
 :root {
-    /* Colores basados en tu diseño */
-    --primary-green: #38761D; 
-    --secondary-green: #6AA84F; 
-    --light-green: #D9EAD3; 
-    --text-color: #333;
-    --white: #FFFFFF;
-}
+     /* Colores basados en tu diseño */
+     --primary-green: #38761D; 
+     --secondary-green: #6AA84F; 
+     --light-green: #D9EAD3; 
+     --text-color: #333;
+     --white: #FFFFFF;
+     /* ✅ Cambiamos el valor a blanco puro y usamos la variable */
+     --button-bar-bg: #FFFFFF; 
+     --button-label-color: #5D4D41;
+    }
 
 /* Estilos Globales y Fondo */
 body {
@@ -28,7 +31,6 @@ body {
 
 .container {
     width: 95%;
-    /* Ajuste clave: Limita el ancho del contenido. 450px es un buen tamaño para tablet vertical/PC */
     max-width: 450px; 
     text-align: center;
     padding: 0 10px;
@@ -36,7 +38,6 @@ body {
 
 /* --- Título y Corazón --- */
 .title-header {
-    /* CAMBIO 4: Reducir el espacio entre el título y el contador (de 25px a 10px) */
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
@@ -45,9 +46,8 @@ body {
 }
 
 .heart-container { 
-    /* CAMBIO 4: Menos espacio debajo del corazón */
     margin-top: 25px; 
-    margin-bottom: 0; /* Eliminado el margen inferior para pegar el corazón al título */
+    margin-bottom: 0; 
 }
 
 .heart-icon {
@@ -60,18 +60,15 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--primary-green);
-    /* CAMBIO 1: Tamaño ajustado para forzar '¡QUEREMOS CELEBRARLO' / 'CONTIGO!' en PC */
     font-size: 1.7em; 
     letter-spacing: 1px;
     margin: 0;
-    /* CAMBIO 1: Línea más apretada para que se vea mejor */
     line-height: 1.3; 
 }
 
 /* --- Contador --- */
 .countdown-section {
     background-color: var(--white);
-    /* CAMBIO 3: Padding: 10px (Superior), 20px (Derecha, Inferior, Izquierda) */
     padding: 10px 20px 20px 20px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -118,10 +115,16 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     overflow: hidden; 
+    
     /* Animación */
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 1s ease-out, transform 1s ease-out;
+    
+    /* Ajuste para que la tarjeta ocupe el espacio */
+    width: 100%; 
+    max-width: 450px;
+    margin-bottom: 30px; /* Espacio para la nueva barra de botones */
 }
 
 .invitation-card-container.visible {
@@ -135,22 +138,70 @@ body {
     display: block; 
 }
 
+/* ----------------------------------------------------- */
+/* ESTILOS: BARRA DE BOTONES ABAJO (Fila) */
+/* ----------------------------------------------------- */
+
+.action-bar {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     width: 100%;
+     /* Mantiene el ancho y centrado del container */
+     max-width: 450px; 
+     padding: 15px 0;
+     margin-top: -20px; 
+     margin-bottom: 30px;
+     border-radius: 10px;
+     /* ✅ Usa la variable que ya definiste en :root */
+     background-color: var(--button-bar-bg); 
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+.action-btn-bar {
+    display: flex;
+    flex-direction: column; /* Título encima, Icono abajo */
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-green);
+    /* Haz que el área de clic sea más grande */
+    padding: 5px 10px;
+    transition: transform 0.2s;
+}
+
+.action-btn-bar:active {
+    transform: scale(0.95);
+}
+
+.btn-label-bar {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8em; 
+    font-weight: 600;
+    color: var(--button-label-color); 
+    margin-bottom: 5px; /* Espacio entre el texto y el icono */
+    white-space: nowrap; 
+}
+
+.btn-icon-bar {
+    width: 45px; /* Íconos más grandes */
+    height: 45px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+
 /* Responsive: Ajustes para pantallas más pequeñas (móviles) */
 @media (max-width: 480px) {
     
-    /* CAMBIO 2: Reducir el ancho del contenedor a 80% para forzar 3 líneas */
     .container {
         max-width: 80%; 
     }
     
     .title-header h1 {
-        /* CAMBIO 2: Aumentar la fuente para que se vea más grande en 3 líneas */
         font-size: 1.8em; 
         line-height: 1.1; 
     }
     
     .countdown-section {
-        /* Reducir padding en móvil para que no se vea tan ancho */
         padding: 10px 15px 15px 15px;
     }
 
@@ -161,5 +212,18 @@ body {
     .time-unit .label {
         font-size: 0.7em;
     }
-}
+    
+    .action-bar {
+        padding: 10px 0;
+        margin-top: -15px;
+    }
 
+    .btn-icon-bar {
+        width: 35px; /* Íconos un poco más pequeños en móvil */
+        height: 35px;
+    }
+    
+    .btn-label-bar {
+        font-size: 0.75em;
+    }
+}
